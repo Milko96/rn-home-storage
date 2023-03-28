@@ -1,19 +1,27 @@
-import React, { memo } from 'react';
-import {Text, View} from 'react-native';
+import React, {memo} from 'react';
+import {Text} from 'react-native';
+import { shadow } from '../../styles/Shadow';
 import ItemProps from '../../types/item.type';
+import {Card} from './ItemCard.styled';
 
 const ItemCard: React.FC<{item: ItemProps}> = ({item}) => {
   return (
-    <View style={{alignItems: 'center'}}>
-      <Text>{item.name}</Text>
-    </View>
+    <Card style={{
+        height: 50,
+        alignItems: 'center',
+        justifyContent: 'center',
+        ...shadow.shadowContainer
+      }}>
+      <Text style={{fontWeight: 700}}>{item.name}</Text>
+    </Card>
   );
 };
 
-const areEqual = (prevState: {item: ItemProps}, nextState: {item: ItemProps}) => {
-    return (
-      prevState.item.id === nextState.item.id
-    );
-  };
+const areEqual = (
+  prevState: {item: ItemProps},
+  nextState: {item: ItemProps},
+) => {
+  return prevState.item.id === nextState.item.id;
+};
 
 export default memo(ItemCard, areEqual);
