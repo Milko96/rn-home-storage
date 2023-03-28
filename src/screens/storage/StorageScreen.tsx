@@ -1,21 +1,33 @@
-import React, {useRef} from 'react';
-import {FlatList} from 'react-native';
+import React, {useEffect, useRef, useState} from 'react';
+import {FlatList, TextInput} from 'react-native';
 import ItemCard from '../../components/home/ItemCard';
+import {Input} from '../../global/styled-components/Input.styled';
 import items from '../../services/storage.service';
 
 const StorageScreen = () => {
   const itemRef = useRef<FlatList>(null);
+
+  const [searchText, setSearchText] = useState('');
+  const [filteredList, setFilteredList] = useState(items);
+
+  useEffect(() => {
+    setFilteredList(items.filter(x=>x.name.toLowerCase().includes(searchText.toLowerCase())));
+  }, [searchText]);
+
   return (
-    <FlatList
+    <>
+      <Input placeceholder={'Type to search'} onChangeText={setSearchText} value={searchText} />
+      <FlatList
         style={{
-            paddingHorizontal: 20,
-            paddingVertical: 5
+          paddingHorizontal: 20,
+          paddingVertical: 5
         }}
-      ref={itemRef}
-      data={items}
-      keyExtractor={item => item.id.toString()}
-      renderItem={({item}) => <ItemCard item={item}></ItemCard>}
-    />
+        ref={itemRef}
+        data={filteredList}
+        keyExtractor={item => item.id.toString()}
+        renderItem={({item}) => <ItemCard item={item}></ItemCard>}
+      />
+    </>
   );
 };
 

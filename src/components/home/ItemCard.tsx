@@ -1,6 +1,6 @@
 import React, {memo} from 'react';
 import {Text} from 'react-native';
-import { shadow } from '../../styles/Shadow';
+import { shadow } from '../../global/styles/Shadow';
 import ItemProps from '../../types/item.type';
 import {Card} from './ItemCard.styled';
 
