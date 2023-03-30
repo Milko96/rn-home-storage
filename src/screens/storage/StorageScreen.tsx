@@ -3,6 +3,7 @@ import { FlatList, TextInput } from 'react-native';
 import ItemCard from '../../components/home/ItemCard';
 import { Input } from '../../global/styled-components/Input.styled';
 import items from '../../services/storage.service';
+import { Header } from 'react-native/Libraries/NewAppScreen';
 
 const StorageScreen = () => {
   const itemRef = useRef<FlatList>(null);
@@ -16,11 +17,20 @@ const StorageScreen = () => {
 
   return (
     <>
-      <Input placeholder={'Type to search'} onChangeText={setSearchText} value={searchText} />
+      <Input
+        placeholder={'Type to search'}
+        onChangeText={setSearchText}
+        value={searchText}
+        style={{
+          position: 'absolute',
+          zIndex: 1
+        }}
+      />
       <FlatList
         style={{
           paddingHorizontal: 20,
-          paddingVertical: 5
+          paddingVertical: 5,
+          marginTop: 35
         }}
         ref={itemRef}
         data={filteredList}
