@@ -3,8 +3,7 @@ import { ScrollView, Text } from 'react-native';
 
 const HomeScreen = () => {
   return (
-    <ScrollView
-      contentInsetAdjustmentBehavior="automatic">
+    <ScrollView contentInsetAdjustmentBehavior='automatic'>
       <Text>home oldal</Text>
     </ScrollView>
   );
