@@ -1,10 +1,11 @@
 import React from 'react';
-import { Text } from 'react-native';
+import { Text, View } from 'react-native';
+import { useTheme } from 'styled-components/native';
 
 const BuyListScreen = () => {
-    return(
-        <Text>Buy list works</Text>
-    );
-}
+  const theme = useTheme();
+
+  return <Text>Buy list works</Text>;
+};
 
 export default BuyListScreen;

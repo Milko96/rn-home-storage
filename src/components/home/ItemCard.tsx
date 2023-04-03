@@ -3,8 +3,11 @@ import { Text } from 'react-native';
 import { shadow } from '../../global/styles/Shadow';
 import ItemProps from '../../types/item.type';
 import { Card } from './ItemCard.styled';
+import { useTheme } from 'styled-components/native';
 
 const ItemCard: React.FC<{ item: ItemProps }> = ({ item }) => {
+  const theme = useTheme();
+
   return (
     <Card
       style={{
@@ -13,7 +16,7 @@ const ItemCard: React.FC<{ item: ItemProps }> = ({ item }) => {
         justifyContent: 'center',
         ...shadow.shadowContainer
       }}>
-      <Text style={{ fontWeight: '700' }}>{item.name}</Text>
+      <Text style={{ fontWeight: '700', color: theme.text }}>{item.name}</Text>
     </Card>
   );
 };

@@ -12,14 +12,28 @@ const BottomTabNavigator = () => {
   const theme = useContext(ThemeContext);
 
   return (
-    <BottomTab.Navigator backBehavior='history'>
+    <BottomTab.Navigator
+      backBehavior='history'
+      sceneContainerStyle={{ backgroundColor: theme.secondary }}
+      screenOptions={() => ({
+        headerTintColor: theme.primary,
+        headerStyle: {
+          backgroundColor: theme.background
+        },
+        headerTitleStyle: {
+          fontWeight: 'bold'
+        },
+        tabBarStyle: {
+          backgroundColor: theme.background
+        },
+        tabBarShowLabel: false
+      })}>
       <BottomTab.Screen
         name='Home'
         component={HomeScreen}
         options={{
           title: 'Home',
-          tabBarShowLabel: false,
-          tabBarIcon: () => <Icon name='home' size={30} />
+          tabBarIcon: route => <Icon name='home' size={30} color={route.focused ? theme.primary : theme.secondary} />
         }}
       />
       <BottomTab.Screen
@@ -27,8 +41,7 @@ const BottomTabNavigator = () => {
         component={StorageScreen}
         options={{
           title: 'On Storage',
-          tabBarShowLabel: false,
-          tabBarIcon: () => <Icon name='bars' size={30} />
+          tabBarIcon: route => <Icon name='bars' size={30} color={route.focused ? theme.primary : theme.secondary} />
         }}
       />
       <BottomTab.Screen
@@ -36,8 +49,9 @@ const BottomTabNavigator = () => {
         component={BuyListScreen}
         options={{
           title: 'Buy list',
-          tabBarShowLabel: false,
-          tabBarIcon: () => <Icon name='shoppingcart' size={30} />
+          tabBarIcon: route => (
+            <Icon name='shoppingcart' size={30} color={route.focused ? theme.primary : theme.secondary} />
+          )
         }}
       />
     </BottomTab.Navigator>

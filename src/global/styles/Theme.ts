@@ -1,14 +1,15 @@
-import { IFontTheme, ITheme } from "./theme.interface";
+import { IFontTheme, ITheme } from './theme.interface';
 
 export const fontFamily: IFontTheme = {
-    fontFamily: 'Roboto'
-}
+  fontFamily: 'Roboto'
+};
 
-export const lightTheme: ITheme = {
-    background: '#fff',
-    primary: '#5046f4',
-    secondary: 'fd9126',
-    accent: 'bd1744',
-    shadow: '00000029',
-    text: '141414'
+export const darkTheme: ITheme = {
+  background: '#303030',
+  primary: '#fc6203',
+  secondary: '#6b6b6b',
+  text: '#fafafa',
+
+  accent: 'bd1744',
+  shadow: '00000029'
 };
