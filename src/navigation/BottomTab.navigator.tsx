@@ -20,9 +20,6 @@ const BottomTabNavigator = () => {
         headerStyle: {
           backgroundColor: theme.background
         },
-        headerTitleStyle: {
-          fontWeight: 'bold'
-        },
         tabBarStyle: {
           backgroundColor: theme.background
         },
@@ -39,10 +36,19 @@ const BottomTabNavigator = () => {
       <BottomTab.Screen
         name='On Storage'
         component={StorageScreen}
-        options={{
+        options={({ navigation }) => ({
           title: 'On Storage',
-          tabBarIcon: route => <Icon name='bars' size={30} color={route.focused ? theme.primary : theme.secondary} />
-        }}
+          tabBarIcon: route => <Icon name='bars' size={30} color={route.focused ? theme.primary : theme.secondary} />,
+          headerRight: () => (
+            <Icon
+              name='plus'
+              size={30}
+              color={theme.primary}
+              style={{ marginEnd: 5 }}
+              onPress={() => navigation.navigate('StorageEditScreen')}
+            />
+          )
+        })}
       />
       <BottomTab.Screen
         name='Buy list'

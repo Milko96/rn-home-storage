@@ -9,7 +9,7 @@ const StorageScreen = () => {
   const itemRef = useRef<FlatList>(null);
 
   const [searchText, setSearchText] = useState('');
-  const [filteredList, setFilteredList] = useState(items.sort((x,y)=>x.name.localeCompare(y.name)));
+  const [filteredList, setFilteredList] = useState(items.sort((x, y) => x.name.localeCompare(y.name)));
 
   useEffect(() => {
     setFilteredList(items.filter(x => x.name.toLowerCase().includes(searchText.toLowerCase())));

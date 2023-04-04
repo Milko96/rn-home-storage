@@ -23,11 +23,4 @@ const fontPixel = (size: number) => {
   return heightPixel(size);
 };
 
-const pixelSizeVertical = (size: number) => {
-  return heightPixel(size);
-};
-
-const pixelSizeHorizontal = (size: number) => {
-  return widthPixel(size);
-};
-export { widthPixel, heightPixel, fontPixel, pixelSizeVertical, pixelSizeHorizontal };
+export { widthPixel, heightPixel, fontPixel };
