@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import HomeScreen from '../screens/home/HomeScreen';
 import BuyListScreen from '../screens/buy-list/BuyListScreen';
-import StorageScreen from '../screens/storage/StorageScreen';
+import StorageScreen from '../screens/storage/storage-list/StorageScreen';
 import Icon from 'react-native-vector-icons/AntDesign';
 import { ThemeContext } from 'styled-components/native';
 
@@ -45,7 +45,7 @@ const BottomTabNavigator = () => {
               size={30}
               color={theme.primary}
               style={{ marginEnd: 5 }}
-              onPress={() => navigation.navigate('StorageEditScreen')}
+              onPress={() => navigation.navigate('StorageItemEditScreen')}
             />
           )
         })}

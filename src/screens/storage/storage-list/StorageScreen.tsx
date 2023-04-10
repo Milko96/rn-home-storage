@@ -1,8 +1,8 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { FlatList } from 'react-native';
-import ItemCard from '../../components/home/ItemCard';
-import { Input } from '../../global/styled-components/Input.styled';
-import items from '../../services/storage.service';
+import ItemCard from '../../../components/home/ItemCard';
+import { Input } from '../../../global/styled-components/Input.styled';
+import items from '../../../services/storage.service';
 import { useTheme } from 'styled-components/native';
 
 const StorageScreen = () => {
@@ -12,7 +12,16 @@ const StorageScreen = () => {
   const [filteredList, setFilteredList] = useState(items.sort((x, y) => x.name.localeCompare(y.name)));
 
   useEffect(() => {
-    setFilteredList(items.filter(x => x.name.toLowerCase().includes(searchText.toLowerCase())));
+    setFilteredList(
+      searchText === ''
+        ? items
+        : items.filter(
+            x =>
+              x.name.toLowerCase().includes(searchText.toLowerCase()) ||
+              x.amounts.some(y => y.brand?.toLowerCase().includes(searchText.toLowerCase())) ||
+              x.amounts.some(y => y.amount?.toString().toLowerCase().includes(searchText.toLowerCase()))
+          )
+    );
   }, [searchText]);
 
   const theme = useTheme();

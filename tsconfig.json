@@ -7,8 +7,8 @@
     "skipLibCheck": true,                                 /* Skip type checking all .d.ts files. */
     "types": [
       "jest",
-      "cypress",
-      "@testing-library/cypress",
+      //"cypress",
+      //"@testing-library/cypress",
       "@types/styled-components-react-native"
     ]
   }

@@ -1,8 +1,8 @@
 import React from 'react';
 import { Text } from 'react-native';
 
-const StorageEditScreen = () => {
+const StorageItemEditScreen = () => {
   return <Text>alma</Text>;
 };
 
-export default StorageEditScreen;
+export default StorageItemEditScreen;
