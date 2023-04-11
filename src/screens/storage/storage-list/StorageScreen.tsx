@@ -1,12 +1,14 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { FlatList } from 'react-native';
 import ItemCard from '../../../components/home/ItemCard';
-import { Input } from '../../../global/styled-components/Input.styled';
-import items from '../../../services/storage.service';
+import { TextInput } from '../../../global/styled-components/Input.styled';
+import service from '../../../services/storage.service';
 import { useTheme } from 'styled-components/native';
 
 const StorageScreen = () => {
   const itemRef = useRef<FlatList>(null);
+
+  const items = service.list();
 
   const [searchText, setSearchText] = useState('');
   const [filteredList, setFilteredList] = useState(items.sort((x, y) => x.name.localeCompare(y.name)));
@@ -19,7 +21,8 @@ const StorageScreen = () => {
             x =>
               x.name.toLowerCase().includes(searchText.toLowerCase()) ||
               x.amounts.some(y => y.brand?.toLowerCase().includes(searchText.toLowerCase())) ||
-              x.amounts.some(y => y.amount?.toString().toLowerCase().includes(searchText.toLowerCase()))
+              x.amounts.some(y => y.amount?.toString().toLowerCase().includes(searchText.toLowerCase())) ||
+              x.amounts.some(y => y.packaging?.measurementUnit.toLowerCase().includes(searchText.toLowerCase()))
           )
     );
   }, [searchText]);
@@ -28,7 +31,7 @@ const StorageScreen = () => {
 
   return (
     <>
-      <Input
+      <TextInput
         placeholder={'Type to search'}
         placeholderTextColor={theme.text}
         onChangeText={setSearchText}

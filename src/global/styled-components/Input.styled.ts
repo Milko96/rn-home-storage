@@ -1,6 +1,6 @@
 import styled from 'styled-components/native';
 
-export const Input = styled.TextInput`
+export const TextInput = styled.TextInput`
   color: ${props => props.theme.primary};
   padding-left: 20px;
   font-weight: 500;
