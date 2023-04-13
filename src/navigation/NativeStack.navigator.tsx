@@ -21,7 +21,7 @@ const NativeStackNavigator = () => {
       <NativeStack.Screen
         name='StorageItemEditScreen'
         component={StorageItemEditScreen}
-        options={{ presentation: 'modal', contentStyle: { backgroundColor: theme.secondary } }}
+        options={{ title: 'Edit storage item', presentation: 'modal', contentStyle: { backgroundColor: theme.secondary } }}
       />
     </NativeStack.Navigator>
   );

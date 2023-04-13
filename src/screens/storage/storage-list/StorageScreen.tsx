@@ -39,12 +39,9 @@ const StorageScreen = () => {
         style={{
           position: 'absolute',
           zIndex: 1,
-          borderStyle: 'solid',
-          borderWidth: 2,
-          borderRadius: 10,
-          borderColor: theme.background,
-          width: '100%',
-          marginTop: 5
+          width: '98%',
+          marginTop: 5,
+          marginHorizontal: 5
         }}
       />
       <FlatList
