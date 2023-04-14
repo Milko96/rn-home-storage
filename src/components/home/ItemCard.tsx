@@ -32,8 +32,4 @@ const ItemCard: React.FC<{ item: StorageItemProps }> = ({ item }) => {
   );
 };
 
-const areEqual = (prevState: { item: StorageItemProps }, nextState: { item: StorageItemProps }) => {
-  return prevState.item.id === nextState.item.id;
-};
-
-export default memo(ItemCard, areEqual);
+export default ItemCard;

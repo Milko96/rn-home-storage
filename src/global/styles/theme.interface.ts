@@ -4,7 +4,9 @@ export interface ITheme {
   secondary: string;
   accent: string;
   shadow: string;
+  placeholder: string;
   text: string;
+  success: string;
 }
 
 export interface IFontTheme {

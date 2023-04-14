@@ -4,14 +4,25 @@ import ItemCard from '../../../components/home/ItemCard';
 import { TextInput } from '../../../global/styled-components/Input.styled';
 import service from '../../../services/storage.service';
 import { useTheme } from 'styled-components/native';
+import StorageItemProps from '../../../types/storage-item.type';
 
 const StorageScreen = () => {
   const itemRef = useRef<FlatList>(null);
 
-  const items = service.list();
+  const onRefresh = () => {
+    setIsRefreshing(true);
+    setItems([...service.list()]);
+    setIsRefreshing(false);
+  };
 
+  const [items, setItems] = useState<StorageItemProps[]>([]);
   const [searchText, setSearchText] = useState('');
   const [filteredList, setFilteredList] = useState(items.sort((x, y) => x.name.localeCompare(y.name)));
+  const [isRefreshing, setIsRefreshing] = useState(false);
+
+  useEffect(() => {
+    onRefresh();
+  }, []);
 
   useEffect(() => {
     setFilteredList(
@@ -22,10 +33,10 @@ const StorageScreen = () => {
               x.name.toLowerCase().includes(searchText.toLowerCase()) ||
               x.amounts.some(y => y.brand?.toLowerCase().includes(searchText.toLowerCase())) ||
               x.amounts.some(y => y.amount?.toString().toLowerCase().includes(searchText.toLowerCase())) ||
-              x.amounts.some(y => y.packaging?.measurementUnit.toLowerCase().includes(searchText.toLowerCase()))
+              x.amounts.some(y => y.packaging?.measurementUnit?.toLowerCase().includes(searchText.toLowerCase()))
           )
     );
-  }, [searchText]);
+  }, [searchText, items]);
 
   const theme = useTheme();
 
@@ -54,6 +65,8 @@ const StorageScreen = () => {
         data={filteredList}
         keyExtractor={item => item.id.toString()}
         renderItem={({ item }) => <ItemCard item={item}></ItemCard>}
+        onRefresh={onRefresh}
+        refreshing={isRefreshing}
       />
     </>
   );
