@@ -1,6 +1,6 @@
 import React, { memo } from 'react';
 import { Text, TouchableOpacity } from 'react-native';
-import { shadow } from '../../global/styles/Shadow';
+import { shadow } from '../../utils/styles/Shadow';
 import StorageItemProps from '../../types/storage-item.type';
 import { Card } from './ItemCard.styled';
 import { useTheme } from 'styled-components/native';

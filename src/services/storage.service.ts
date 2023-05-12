@@ -17,11 +17,7 @@ const update = (item: StorageItemProps) => {
   const existing = find(item.id);
   if (existing) {
     existing.name = item.name;
-    existing.amounts[0].brand = item.amounts[0].brand;
-    existing.amounts[0].amount = item.amounts[0].amount;
-    existing.amounts[0].packaging.size = item.amounts[0].packaging.size;
-    existing.amounts[0].packaging.measurementUnit = item.amounts[0].packaging.measurementUnit;
-    existing.amounts[0].bestBefore = item.amounts[0].bestBefore;
+    existing.amounts = [...item.amounts];
   }
 };
 

@@ -1,0 +1,15 @@
+{
+    "common": {
+        "search": "Írj a kereséshez",
+        "save": "Mentés",
+        "cancel": "Mégse"
+    },
+    "item_edit":{
+        "name": "Név",
+        "brand": "Márka",
+        "amount": "Mennyiség",
+        "size": "Méret",
+        "measurement_unit": "Mennyiségi egység",
+        "best_before": "Minőségét megőrzi"
+    }
+}

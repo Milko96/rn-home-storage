@@ -63,7 +63,9 @@ const items: StorageItemProps[] = [
     name: 'vaníliás cukor',
     amounts: [
       { brand: 'Lidl', amount: 1, packaging: { size: 100, measurementUnit: 'g' } },
-      { brand: 'Dr. Oetker', amount: 4, packaging: { size: 8, measurementUnit: 'g' } }
+      { brand: 'Cukormanufaktúra', amount: 1, packaging: { size: 100, measurementUnit: 'g' } },
+      { brand: 'Dr. Oetker', amount: 4, packaging: { size: 8, measurementUnit: 'g' } },
+      { brand: 'Aldi', amount: 1, packaging: { size: 8, measurementUnit: 'g' } }
     ]
   },
   {

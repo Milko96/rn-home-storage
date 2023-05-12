@@ -1,0 +1,15 @@
+{
+    "common": {
+        "search": "Type to search",
+        "save": "Save",
+        "cancel": "Cancel"
+    },
+    "item_edit":{
+        "name": "Name",
+        "brand": "Brand",
+        "amount": "Amount",
+        "size": "Size",
+        "measurement_unit": "Measurement unit",
+        "best_before": "Best before"
+    }
+}

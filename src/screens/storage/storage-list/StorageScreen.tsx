@@ -1,13 +1,15 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { FlatList } from 'react-native';
 import ItemCard from '../../../components/home/ItemCard';
-import { TextInput } from '../../../global/styled-components/Input.styled';
+import { TextInput } from '../../../components/styled-components/Input.styled';
 import service from '../../../services/storage.service';
 import { useTheme } from 'styled-components/native';
 import StorageItemProps from '../../../types/storage-item.type';
+import { useTranslation } from 'react-i18next';
 
 const StorageScreen = () => {
   const itemRef = useRef<FlatList>(null);
+  const { t } = useTranslation();
 
   const onRefresh = () => {
     setIsRefreshing(true);
@@ -43,7 +45,7 @@ const StorageScreen = () => {
   return (
     <>
       <TextInput
-        placeholder={'Type to search'}
+        placeholder={t('common:search')}
         placeholderTextColor={theme.text}
         onChangeText={setSearchText}
         value={searchText}
