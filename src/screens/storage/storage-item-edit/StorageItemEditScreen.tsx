@@ -58,10 +58,8 @@ const StorageItemEditScreen = () => {
           {
             brand: formik.values.brand,
             amount: formik.values.amount ? +formik.values.amount : null,
-            packaging: {
-              size: formik.values.size ? +formik.values.size : null,
-              measurementUnit: formik.values.measurementUnit
-            },
+            size: formik.values.size ? +formik.values.size : null,
+            measurementUnit: formik.values.measurementUnit
             bestBefore: formik.values.bestBefore && new Date(formik.values.bestBefore)
           }
         ]
@@ -127,9 +125,9 @@ const StorageItemEditScreen = () => {
                     keyboardType='numeric'
                     placeholder={t('item_edit:size')}
                     placeholderTextColor={theme.placeholder}
-                    value={formik.values.amounts![item.index].packaging.size?.toString() ?? undefined}
-                    onChangeText={v => formik.setFieldValue(`amounts[${item.index}].packaging.size`, v)}
-                    onBlur={formik.handleBlur(`amounts[${item.index}].packaging.size`)}
+                    value={formik.values.amounts![item.index].size?.toString() ?? undefined}
+                    onChangeText={v => formik.setFieldValue(`amounts[${item.index}].size`, v)}
+                    onBlur={formik.handleBlur(`amounts[${item.index}].size`)}
                   />
                   <InputErrorMessage errors={formik.errors.amounts} isSubmitting={formik.isSubmitting} />
                   <TextInput
@@ -137,9 +135,9 @@ const StorageItemEditScreen = () => {
                     autoCapitalize='none'
                     placeholder={t('item_edit:measurement_unit')}
                     placeholderTextColor={theme.placeholder}
-                    value={formik.values.amounts![item.index].packaging.measurementUnit ?? undefined}
-                    onChangeText={formik.handleChange(`amounts[${item.index}].packaging.measurementUnit`)}
-                    onBlur={formik.handleBlur(`amounts[${item.index}].packaging.measurementUnit`)}
+                    value={formik.values.amounts![item.index].measurementUnit ?? undefined}
+                    onChangeText={formik.handleChange(`amounts[${item.index}].measurementUnit`)}
+                    onBlur={formik.handleBlur(`amounts[${item.index}].measurementUnit`)}
                   />
                   <InputErrorMessage errors={formik.errors.amounts} isSubmitting={formik.isSubmitting} />
                   <View

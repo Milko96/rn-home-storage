@@ -35,7 +35,7 @@ const StorageScreen = () => {
               x.name.toLowerCase().includes(searchText.toLowerCase()) ||
               x.amounts.some(y => y.brand?.toLowerCase().includes(searchText.toLowerCase())) ||
               x.amounts.some(y => y.amount?.toString().toLowerCase().includes(searchText.toLowerCase())) ||
-              x.amounts.some(y => y.packaging?.measurementUnit?.toLowerCase().includes(searchText.toLowerCase()))
+              x.amounts.some(y => y?.measurementUnit?.toLowerCase().includes(searchText.toLowerCase()))
           )
     );
   }, [searchText, items]);

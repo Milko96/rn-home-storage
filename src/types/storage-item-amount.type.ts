@@ -1,10 +1,8 @@
 type StorageItemAmountProps = {
   brand: string | null;
   amount: number | null;
-  packaging: {
-    size: number | null;
-    measurementUnit: string | null;
-  };
+  size: number | null;
+  measurementUnit: string | null;
   bestBefore?: Date | null;
 };
 

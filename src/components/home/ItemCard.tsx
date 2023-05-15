@@ -24,8 +24,8 @@ const ItemCard: React.FC<{ item: StorageItemProps }> = ({ item }) => {
         <Text style={{ fontWeight: '700', color: theme.text }}>{item.name}</Text>
         <Text style={{ marginLeft: 5, color: theme.text }}>{item.amounts[0]?.brand}</Text>
         <Text style={{ marginLeft: 5, color: theme.text }}>
-          {item.amounts[0]?.amount} x {item.amounts[0]?.packaging.size}
-          {item.amounts[0]?.packaging.measurementUnit}
+          {item.amounts[0]?.amount} x {item.amounts[0]?.size}
+          {item.amounts[0]?.measurementUnit}
         </Text>
       </Card>
     </TouchableOpacity>
