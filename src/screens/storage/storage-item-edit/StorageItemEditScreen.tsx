@@ -34,7 +34,7 @@ const StorageItemEditScreen = () => {
       .string()
       .nullable()
       .max(50, () => 'Brand is too long'),
-    amount: yup.number(),//mivel lista a formban, így nem éppen működik .required(() => 'Amount is required'),
+    amount: yup.number(), //mivel lista a formban, így nem éppen működik .required(() => 'Amount is required'),
     size: yup.number().nullable(),
     measurementUnit: yup
       .string()
@@ -53,17 +53,6 @@ const StorageItemEditScreen = () => {
         id: itemId,
         name: formik.values.name,
         amounts: formik.values.amounts!
-        /*
-        [
-          {
-            brand: formik.values.brand,
-            amount: formik.values.amount ? +formik.values.amount : null,
-            size: formik.values.size ? +formik.values.size : null,
-            measurementUnit: formik.values.measurementUnit
-            bestBefore: formik.values.bestBefore && new Date(formik.values.bestBefore)
-          }
-        ]
-        */
       };
       if (itemId) {
         service.update(dto);
@@ -110,36 +99,41 @@ const StorageItemEditScreen = () => {
                     onBlur={formik.handleBlur(`amounts[${item.index}].brand`)}
                   />
                   <InputErrorMessage errors={formik.errors.amounts} isSubmitting={formik.isSubmitting} />
-                  <TextInput
-                    style={{ marginTop: 5 }}
-                    keyboardType='numeric'
-                    placeholder={t('item_edit:amount')}
-                    placeholderTextColor={theme.placeholder}
-                    value={formik.values.amounts![item.index].amount?.toString() ?? undefined}
-                    onChangeText={v => formik.setFieldValue(`amounts[${item.index}].amount`, v)}
-                    onBlur={formik.handleBlur(`amounts[${item.index}].amount`)}
-                  />
-                  <InputErrorMessage errors={formik.errors.amounts} isSubmitting={formik.isSubmitting} />
-                  <TextInput
-                    style={{ marginTop: 5 }}
-                    keyboardType='numeric'
-                    placeholder={t('item_edit:size')}
-                    placeholderTextColor={theme.placeholder}
-                    value={formik.values.amounts![item.index].size?.toString() ?? undefined}
-                    onChangeText={v => formik.setFieldValue(`amounts[${item.index}].size`, v)}
-                    onBlur={formik.handleBlur(`amounts[${item.index}].size`)}
-                  />
-                  <InputErrorMessage errors={formik.errors.amounts} isSubmitting={formik.isSubmitting} />
-                  <TextInput
-                    style={{ marginTop: 5 }}
-                    autoCapitalize='none'
-                    placeholder={t('item_edit:measurement_unit')}
-                    placeholderTextColor={theme.placeholder}
-                    value={formik.values.amounts![item.index].measurementUnit ?? undefined}
-                    onChangeText={formik.handleChange(`amounts[${item.index}].measurementUnit`)}
-                    onBlur={formik.handleBlur(`amounts[${item.index}].measurementUnit`)}
-                  />
-                  <InputErrorMessage errors={formik.errors.amounts} isSubmitting={formik.isSubmitting} />
+                  <View style={{ flexDirection: 'row' }}>
+                    <TextInput
+                      style={{ marginTop: 5, marginRight: 5 }}
+                      keyboardType='numeric'
+                      placeholder={t('item_edit:amount')}
+                      placeholderTextColor={theme.placeholder}
+                      value={formik.values.amounts![item.index].amount?.toString() ?? undefined}
+                      onChangeText={v => formik.setFieldValue(`amounts[${item.index}].amount`, v)}
+                      onBlur={formik.handleBlur(`amounts[${item.index}].amount`)}
+                    />
+                    <InputErrorMessage errors={formik.errors.amounts} isSubmitting={formik.isSubmitting} />
+                    <Text style={{ textAlignVertical: 'center', fontSize: 25, marginRight: 5, color: theme.text }}>
+                      x
+                    </Text>
+                    <TextInput
+                      style={{ marginTop: 5, marginRight: 5 }}
+                      keyboardType='numeric'
+                      placeholder={t('item_edit:size')}
+                      placeholderTextColor={theme.placeholder}
+                      value={formik.values.amounts![item.index].size?.toString() ?? undefined}
+                      onChangeText={v => formik.setFieldValue(`amounts[${item.index}].size`, v)}
+                      onBlur={formik.handleBlur(`amounts[${item.index}].size`)}
+                    />
+                    <InputErrorMessage errors={formik.errors.amounts} isSubmitting={formik.isSubmitting} />
+                    <TextInput
+                      style={{ marginTop: 5 }}
+                      autoCapitalize='none'
+                      placeholder={t('item_edit:measurement_unit')}
+                      placeholderTextColor={theme.placeholder}
+                      value={formik.values.amounts![item.index].measurementUnit ?? undefined}
+                      onChangeText={formik.handleChange(`amounts[${item.index}].measurementUnit`)}
+                      onBlur={formik.handleBlur(`amounts[${item.index}].measurementUnit`)}
+                    />
+                    <InputErrorMessage errors={formik.errors.amounts} isSubmitting={formik.isSubmitting} />
+                  </View>
                   <View
                     style={{
                       flexDirection: 'row',
